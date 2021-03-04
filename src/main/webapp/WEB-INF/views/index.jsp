@@ -13,26 +13,22 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container" style="width: 30%">
+<div class="container" style="width: 60%">
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">
-                <b>#</b>
-            </th>
-            <th scope="col">
-                <b>Name</b>
-            </th>
+            <th scope="col"> ID</th>
+            <th scope="col"> Name</th>
+            <th scope="col"> Text</th>
+            <th scope="col"> Address</th>
         </tr>
         </thead>
-        <c:forEach var="user" items="${users}" varStatus="count">
+        <c:forEach var="accident" items="${accidents}">
             <tr>
-                <th scope="row">
-                        ${count.index + 1}
-                </th>
-                <th scope="row">
-                        ${user}
-                </th>
+                <th scope="row"> ${accident.value.id} </th>
+                <td> ${accident.value.name} </td>
+                <td> ${accident.value.text} </td>
+                <td> ${accident.value.address} </td>
             </tr>
         </c:forEach>
     </table>
