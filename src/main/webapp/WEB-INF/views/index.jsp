@@ -13,7 +13,7 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container" style="width: 60%">
+<div class="container" style="width: 60%;padding: 5%">
     <table class="table table-striped">
         <thead>
         <tr>
@@ -32,6 +32,8 @@
             </tr>
         </c:forEach>
     </table>
+    <br>
+    <a class="btn btn-primary" href="<c:url value='/create'/>" style="float: right" role="button">Add accident</a>
 </div>
 </body>
 </html>
