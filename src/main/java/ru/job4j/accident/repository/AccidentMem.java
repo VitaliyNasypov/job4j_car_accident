@@ -29,4 +29,8 @@ public class AccidentMem {
         }
         return ACCIDENTS.put(accident.getId(), accident);
     }
+
+    public Accident findById(int id) {
+        return ACCIDENTS.get(id);
+    }
 }
