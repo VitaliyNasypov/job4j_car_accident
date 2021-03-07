@@ -28,6 +28,17 @@
             <label for="address" class="form-label">Address</label>
             <input type="text" class="form-control" id="address" name="address" value="${accident.address}" required>
         </div>
+        <div class="col-md-4">
+            <label for="type.id" class="form-label">Address</label>
+            <select class="form-select" aria-label="Default select example" id="type.id" name="type.id" required>
+                <option selected value="${accident.type.id}">${accident.type.name}</option>
+                <c:forEach var="type" items="${accidentTypes}">
+                    <c:if test="${accident.type.id != type.id}">
+                        <option value="${type.id}">${type.name}</option>
+                    </c:if>
+                </c:forEach>
+            </select>
+        </div>
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Update accident</button>
         </div>

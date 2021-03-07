@@ -21,6 +21,7 @@
             <th scope="col"> Name</th>
             <th scope="col"> Text</th>
             <th scope="col"> Address</th>
+            <th scope="col"> Accident Type</th>
         </tr>
         </thead>
         <c:forEach var="accident" items="${accidents}">
@@ -38,6 +39,7 @@
                 <td> ${accident.name} </td>
                 <td> ${accident.text} </td>
                 <td> ${accident.address} </td>
+                <td> ${accident.type.name} </td>
             </tr>
         </c:forEach>
     </table>
