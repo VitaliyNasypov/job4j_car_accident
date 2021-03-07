@@ -17,7 +17,7 @@ public class AccidentMem {
     private static final AtomicInteger ACCIDENT_ID = new AtomicInteger(4);
     private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
 
-    private AccidentMem() {
+    public AccidentMem() {
         Rule one = Rule.of(1, "Article. 1");
         Rule two = Rule.of(2, "Article. 2");
         Set<Rule> rules = new HashSet<>();
@@ -31,14 +31,6 @@ public class AccidentMem {
                 AccidentType.of(3, "Машина и велосипед"), rules));
         accidents.put(4, new Accident(4, "Name_4", "Text_4", "Address_4",
                 AccidentType.of(1, "Две машины"), rules));
-    }
-
-    private static final class Lazy {
-        private static final AccidentMem INST = new AccidentMem();
-    }
-
-    public static AccidentMem of() {
-        return Lazy.INST;
     }
 
     public Collection<Accident> findAll() {
