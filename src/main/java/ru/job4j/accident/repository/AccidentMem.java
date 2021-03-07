@@ -3,9 +3,12 @@ package ru.job4j.accident.repository;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
+import ru.job4j.accident.model.Rule;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -15,14 +18,19 @@ public class AccidentMem {
     private final Map<Integer, Accident> ACCIDENTS = new ConcurrentHashMap<>();
 
     private AccidentMem() {
+        Rule one = Rule.of(1, "Article. 1");
+        Rule two = Rule.of(2, "Article. 2");
+        Set<Rule> rules = new HashSet<>();
+        rules.add(one);
+        rules.add(two);
         ACCIDENTS.put(1, new Accident(1, "Name_1", "Text_1", "Address_1",
-                AccidentType.of(1, "Две машины")));
+                AccidentType.of(1, "Две машины"), rules));
         ACCIDENTS.put(2, new Accident(2, "Name_2", "Text_2", "Address_2",
-                AccidentType.of(1, "Две машины")));
+                AccidentType.of(1, "Две машины"), rules));
         ACCIDENTS.put(3, new Accident(3, "Name_3", "Text_3", "Address_3",
-                AccidentType.of(3, "Машина и велосипед")));
+                AccidentType.of(3, "Машина и велосипед"), rules));
         ACCIDENTS.put(4, new Accident(4, "Name_4", "Text_4", "Address_4",
-                AccidentType.of(1, "Две машины")));
+                AccidentType.of(1, "Две машины"), rules));
     }
 
     private static final class Lazy {

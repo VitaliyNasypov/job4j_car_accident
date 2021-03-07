@@ -25,7 +25,7 @@
             <input type="text" class="form-control" id="text" name="text" value="${accident.text}" required>
         </div>
         <div class="col-md-4">
-            <label for="address" class="form-label">Address</label>
+            <label for="address" class="form-label">Accident Type</label>
             <input type="text" class="form-control" id="address" name="address" value="${accident.address}" required>
         </div>
         <div class="col-md-4">
@@ -36,6 +36,18 @@
                     <c:if test="${accident.type.id != type.id}">
                         <option value="${type.id}">${type.name}</option>
                     </c:if>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="rulesId" class="form-label">Rules</label>
+            <select class="form-select" aria-label="Default select example" id="rulesId" name="rulesId" multiple
+                    required>
+                <c:forEach var="rule" items="${accident.rules}">
+                    <option selected value="${rule.id}">${rule.name}</option>
+                </c:forEach>
+                <c:forEach var="rule" items="${rules}">
+                    <option value="${rule.id}">${rule.name}</option>
                 </c:forEach>
             </select>
         </div>

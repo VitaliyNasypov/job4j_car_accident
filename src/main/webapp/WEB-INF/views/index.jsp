@@ -22,6 +22,7 @@
             <th scope="col"> Text</th>
             <th scope="col"> Address</th>
             <th scope="col"> Accident Type</th>
+            <th scope="col"> Rules</th>
         </tr>
         </thead>
         <c:forEach var="accident" items="${accidents}">
@@ -40,6 +41,18 @@
                 <td> ${accident.text} </td>
                 <td> ${accident.address} </td>
                 <td> ${accident.type.name} </td>
+                <td>
+                    <c:forEach var="rule" items="${accident.rules}" varStatus="loop">
+                        <c:choose>
+                            <c:when test="${loop.last}">
+                                ${rule.name}
+                            </c:when>
+                            <c:otherwise>
+                                ${rule.name},
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </td>
             </tr>
         </c:forEach>
     </table>

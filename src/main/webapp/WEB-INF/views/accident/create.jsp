@@ -37,6 +37,15 @@
                 </c:forEach>
             </select>
         </div>
+        <div class="col-md-4">
+            <label for="rulesId" class="form-label">Rules</label>
+            <select class="form-select" aria-label="Default select example" id="rulesId" name="rulesId" multiple
+                    required>
+                <c:forEach var="rule" items="${rules}">
+                    <option value="${rule.id}">${rule.name}</option>
+                </c:forEach>
+            </select>
+        </div>
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Add accident</button>
         </div>
