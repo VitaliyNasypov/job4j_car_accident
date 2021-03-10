@@ -1,14 +1,10 @@
-package ru.job4j.accident.repository;
+package ru.job4j.accident.repository.memory;
 
 import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -18,26 +14,26 @@ public class AccidentMem {
     private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
 
     public AccidentMem() {
-        Rule one = Rule.of(1, "Article. 1");
-        Rule two = Rule.of(2, "Article. 2");
-        Set<Rule> rules = new HashSet<>();
-        rules.add(one);
-        rules.add(two);
+        AccidentTypeMem accidentTypeMem = new AccidentTypeMem();
+        RuleMem ruleMem = new RuleMem();
+        Set<Rule> addRules = new HashSet<>();
+        addRules.add(ruleMem.findAll().get(0));
+        addRules.add(ruleMem.findAll().get(2));
         accidents.put(1, new Accident(1, "Name_1", "Text_1", "Address_1",
-                AccidentType.of(1, "Две машины"), rules));
+                accidentTypeMem.findAll().get(0), addRules));
         accidents.put(2, new Accident(2, "Name_2", "Text_2", "Address_2",
-                AccidentType.of(1, "Две машины"), rules));
+                accidentTypeMem.findAll().get(0), addRules));
         accidents.put(3, new Accident(3, "Name_3", "Text_3", "Address_3",
-                AccidentType.of(3, "Машина и велосипед"), rules));
+                accidentTypeMem.findAll().get(2), addRules));
         accidents.put(4, new Accident(4, "Name_4", "Text_4", "Address_4",
-                AccidentType.of(1, "Две машины"), rules));
+                accidentTypeMem.findAll().get(2), addRules));
     }
 
-    public Collection<Accident> findAll() {
-        return accidents.values();
+    public List<Accident> findAll() {
+        return new ArrayList<>(accidents.values());
     }
 
-    public Accident create(Accident accident) {
+    public Accident save(Accident accident) {
         if (accident.getId() == 0) {
             accident.setId(ACCIDENT_ID.incrementAndGet());
         }

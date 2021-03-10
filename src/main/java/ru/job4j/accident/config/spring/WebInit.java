@@ -1,10 +1,9 @@
-package ru.job4j.accident;
+package ru.job4j.accident.config.spring;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
-import ru.job4j.accident.config.WebConfig;
 
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;

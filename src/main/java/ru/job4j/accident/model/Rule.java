@@ -6,7 +6,7 @@ public class Rule {
     private int id;
     private String name;
 
-    private Rule() {
+    public Rule() {
     }
 
     public static Rule of(int id, String name) {
