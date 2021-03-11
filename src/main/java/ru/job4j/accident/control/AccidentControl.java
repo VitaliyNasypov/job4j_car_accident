@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.service.memory.AccidentService;
+import ru.job4j.accident.service.AccidentService;
+import ru.job4j.accident.service.jdbc.AccidentServiceJdbc;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 public class AccidentControl {
     private final AccidentService accidentService;
 
-    public AccidentControl(AccidentService accidentService) {
-        this.accidentService = accidentService;
+    public AccidentControl(AccidentServiceJdbc accidentServiceJdbc) {
+        this.accidentService = accidentServiceJdbc;
     }
 
     @GetMapping("/create")

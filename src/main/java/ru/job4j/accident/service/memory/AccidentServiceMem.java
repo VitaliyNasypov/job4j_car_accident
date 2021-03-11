@@ -7,6 +7,7 @@ import ru.job4j.accident.model.Rule;
 import ru.job4j.accident.repository.memory.AccidentMem;
 import ru.job4j.accident.repository.memory.AccidentTypeMem;
 import ru.job4j.accident.repository.memory.RuleMem;
+import ru.job4j.accident.service.AccidentService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,12 +15,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class AccidentService {
+public class AccidentServiceMem implements AccidentService {
     private final AccidentMem accidentMem;
     private final AccidentTypeMem accidentTypeMem;
     private final RuleMem ruleMem;
 
-    public AccidentService(AccidentMem accidentMem, AccidentTypeMem accidentTypeMem, RuleMem ruleMem) {
+    public AccidentServiceMem(AccidentMem accidentMem, AccidentTypeMem accidentTypeMem,
+                              RuleMem ruleMem) {
         this.accidentMem = accidentMem;
         this.accidentTypeMem = accidentTypeMem;
         this.ruleMem = ruleMem;
@@ -34,7 +36,11 @@ public class AccidentService {
                 .filter(e -> Arrays.stream(idRules).anyMatch(s -> Integer.parseInt(s) == e.getId()))
                 .collect(Collectors.toSet());
         accident.setRules(ruleSet);
-        accidentMem.save(accident);
+        if (accident.getId() == 0) {
+            accidentMem.create(accident);
+        } else {
+            accidentMem.update(accident);
+        }
         return accident;
     }
 
@@ -58,6 +64,4 @@ public class AccidentService {
         return ruleMem.findAll().stream().filter(e -> !accident.getRules()
                 .contains(e)).collect(Collectors.toList());
     }
-
-
 }

@@ -33,10 +33,12 @@ public class AccidentMem {
         return new ArrayList<>(accidents.values());
     }
 
-    public Accident save(Accident accident) {
-        if (accident.getId() == 0) {
-            accident.setId(ACCIDENT_ID.incrementAndGet());
-        }
+    public Accident create(Accident accident) {
+        accident.setId(ACCIDENT_ID.incrementAndGet());
+        return accidents.put(accident.getId(), accident);
+    }
+
+    public Accident update(Accident accident) {
         return accidents.put(accident.getId(), accident);
     }
 
