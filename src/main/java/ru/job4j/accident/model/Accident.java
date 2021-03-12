@@ -1,15 +1,27 @@
 package ru.job4j.accident.model;
 
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Entity
+@Table(name = "ACCIDENTS")
 public class Accident {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "text", nullable = false)
     private String text;
+    @Column(name = "address", nullable = false)
     private String address;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ACCIDENT_TYPE_ID", nullable = false)
     private AccidentType type;
-    private Set<Rule> rules;
+    @ManyToMany(mappedBy = "accidents")
+    private Set<Rule> rules = new HashSet<>();
 
     public Accident() {
     }
@@ -29,6 +41,16 @@ public class Accident {
         this.address = address;
         this.type = type;
         this.rules = rules;
+    }
+
+    public void addRule(Rule rule) {
+        rules.add(rule);
+        rule.getAccidents().add(this);
+    }
+
+    public void removeRule(Rule rule) {
+        rules.remove(rule);
+        rule.getAccidents().remove(this);
     }
 
     public int getId() {
@@ -88,16 +110,14 @@ public class Accident {
             return false;
         }
         Accident accident = (Accident) o;
-        return id == accident.id
-                && Objects.equals(name, accident.name)
-                && Objects.equals(text, accident.text)
-                && Objects.equals(address, accident.address)
-                && Objects.equals(type, accident.type)
-                && Objects.equals(rules, accident.rules);
+        return getId() == accident.getId()
+                && Objects.equals(getName(), accident.getName())
+                && Objects.equals(getText(), accident.getText())
+                && Objects.equals(getAddress(), accident.getAddress());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, text, address, type, rules);
+        return Objects.hash(getId(), getName(), getText(), getAddress());
     }
 }

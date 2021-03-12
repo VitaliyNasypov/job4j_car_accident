@@ -4,14 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.job4j.accident.service.AccidentService;
-import ru.job4j.accident.service.jdbc.AccidentServiceJdbc;
+import ru.job4j.accident.service.hibernate.AccidentServiceHibernate;
 
 @Controller
 public class IndexControl {
     private final AccidentService accidentService;
 
-    public IndexControl(AccidentServiceJdbc accidentServiceJdbc) {
-        this.accidentService = accidentServiceJdbc;
+    public IndexControl(AccidentServiceHibernate accidentServiceHibernate) {
+        this.accidentService = accidentServiceHibernate;
     }
 
     @GetMapping("/")

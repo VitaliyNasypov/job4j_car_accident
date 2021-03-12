@@ -5,10 +5,19 @@ install: true
 # Версия JDK для сборки проекта
 jdk: oraclejdk11
 
+services:
+  - postgresql
+
+addons:
+  postgresql: "10"
+
 os:
   - linux
 
 dist: xenial
+
+before_install:
+  - psql -c 'create database auto_crash;' -U postgres
 
 # После выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # И отправлять на сервис https://codecov.io/
