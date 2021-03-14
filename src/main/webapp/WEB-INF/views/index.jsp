@@ -14,6 +14,7 @@
 </head>
 <body>
 <div class="container" style="width: 60%;padding: 5%">
+<h4>Login as : <span class="badge bg-secondary"> ${user.username}</span></h4>
     <table class="table table-striped">
         <thead>
         <tr>
