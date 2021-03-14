@@ -29,7 +29,7 @@ public class AccidentServiceData implements AccidentService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Accident save(Accident accident, String[] idRules) {
         accident.setType(accidentTypeRepository
                 .findById(accident
