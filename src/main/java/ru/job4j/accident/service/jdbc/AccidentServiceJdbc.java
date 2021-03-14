@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Service
+//@Service
 public class AccidentServiceJdbc implements AccidentService {
     private final AccidentJdbcTemplate accidentJdbcTemplate;
 

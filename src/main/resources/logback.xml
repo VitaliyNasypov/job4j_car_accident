@@ -26,6 +26,20 @@
         <appender-ref ref="FILE"/>
     </root>
     <!-- Настройка логирования для Hibernate -->
-    <logger name="org.hibernate" level="info"/>
+    <logger name="org.hibernate" level="warn"/>
     <logger name="org.hibernate.stat" level="debug"/>
+    <logger name="org.hibernate.hql.PARSER" level="error"/>
+    <!-- Настройка логирования для Apache -->
+    <logger name="org.apache" level="INFO"/>
+    <!-- Настройка логирования для HSQLDB -->
+    <logger name="org.hsqldb" level="WARN"/>
+    <!-- Настройка логирования для Spring Quartz API -->
+    <logger name="org.quartz" level="WARN"/>
+
+<!--    <logger name="log4j.logger.org.mortbay" level="INFO"/>-->
+<!--    <logger name="log4j.logger.hql.parser" level="ERROR"/>-->
+<!--    <logger name="log4j.logger.net.sf" level="ERROR"/>-->
+<!--    <logger name="log4j.logger.org.jetel.graph" level="ERROR"/>-->
+<!--    <logger name="log4j.logger.com.bradmcevoy" level="ERROR"/>-->
+<!--    <logger name="log4j.logger.org.jboss.resteasy.plugins.server.servlet" level="ERROR"/>-->
 </configuration>

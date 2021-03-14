@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Service
+//@Service
 public class AccidentServiceMem implements AccidentService {
     private final AccidentMem accidentMem;
     private final AccidentTypeMem accidentTypeMem;

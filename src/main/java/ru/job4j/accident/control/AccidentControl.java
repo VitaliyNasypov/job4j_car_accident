@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.service.AccidentService;
-import ru.job4j.accident.service.hibernate.AccidentServiceHibernate;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 public class AccidentControl {
     private final AccidentService accidentService;
 
-    public AccidentControl(AccidentServiceHibernate accidentServiceHibernate) {
-        this.accidentService = accidentServiceHibernate;
+    public AccidentControl(AccidentService accidentService) {
+        this.accidentService = accidentService;
     }
 
     @GetMapping("/create")

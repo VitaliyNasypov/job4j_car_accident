@@ -118,6 +118,6 @@ public class Accident {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getText(), getAddress());
+        return getClass().hashCode();
     }
 }

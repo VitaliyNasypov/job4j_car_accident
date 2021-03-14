@@ -2,6 +2,7 @@ package ru.job4j.accident.repository.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
@@ -10,11 +11,11 @@ import ru.job4j.accident.model.Rule;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+//@Repository
 public class AccidentHibernate {
     private final SessionFactory sf;
 
-    public AccidentHibernate(SessionFactory sf) {
+    public AccidentHibernate(@Qualifier("sessionFactory") SessionFactory sf) {
         this.sf = sf;
     }
 
