@@ -14,6 +14,7 @@
 </head>
 <body>
 <div style="width: 60%;padding: 5%">
+    <div class="shadow p-3 mb-5 bg-body rounded"><h1 class="display-6" style="text-align: center">Update Accident</h1></div>
     <form class="row g-3" action="<c:url value='/save?id=${accident.id}'/>" method='POST'>
         <div class="col-md-4">
             <label for="name" class="form-label">Name</label>

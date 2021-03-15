@@ -14,7 +14,8 @@
 </head>
 <body>
 <div class="container" style="width: 60%;padding: 5%">
-<h4>Login as : <span class="badge bg-secondary"> ${user.username}</span></h4>
+    <a class="btn btn-outline-info" href="<c:url value='/logout'/>" style="float: right">User name: ${user.username} |
+        Logout</a>
     <table class="table table-striped">
         <thead>
         <tr>

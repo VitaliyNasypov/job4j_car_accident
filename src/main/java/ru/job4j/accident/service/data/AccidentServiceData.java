@@ -1,5 +1,6 @@
 package ru.job4j.accident.service.data;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.accident.model.Accident;
@@ -20,6 +21,7 @@ public class AccidentServiceData implements AccidentService {
     private final AccidentTypeRepository accidentTypeRepository;
     private final RuleRepository ruleRepository;
 
+    @Autowired
     public AccidentServiceData(AccidentRepository accidentRepository,
                                AccidentTypeRepository accidentTypeRepository,
                                RuleRepository ruleRepository) {
@@ -37,7 +39,8 @@ public class AccidentServiceData implements AccidentService {
                         .getId())
                 .orElse(new AccidentType()));
         if (accident.getId() != 0) {
-            Accident accidentUpdate = accidentRepository.findById(accident.getId()).orElse(new Accident());
+            Accident accidentUpdate = accidentRepository.findById(accident.getId())
+                    .orElse(new Accident());
             for (Rule rule : new ArrayList<>(accidentUpdate.getRules())) {
                 accidentUpdate.removeRule(rule);
             }

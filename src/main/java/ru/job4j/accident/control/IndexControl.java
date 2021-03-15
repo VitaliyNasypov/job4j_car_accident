@@ -17,7 +17,10 @@ public class IndexControl {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("accidents", accidentService.findAllAccident());
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        model.addAttribute("user", SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal());
         return "index";
     }
 }

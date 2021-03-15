@@ -14,13 +14,13 @@
 </head>
 <body>
 <div class="container" style="width: 60%;padding: 5%">
-    <div class="shadow p-3 mb-5 bg-body rounded"><h1 class="display-6" style="text-align: center">Sign-In</h1></div>
+    <div class="shadow p-3 mb-5 bg-body rounded"><h1 class="display-6" style="text-align: center">Sign-Up</h1></div>
     <c:if test="${not empty errorMessage}">
         <div style="color:red; font-weight: bold; margin: 30px 0px;">
                 ${errorMessage}
         </div>
     </c:if>
-    <form class="row g-3" name='login' action="<c:url value='/login'/>" method='POST'>
+    <form class="row g-3" name='login' action="<c:url value='/reg'/>" method='POST'>
         <div class="col-12">
             <label for="username" class="form-label">UserName:</label>
             <input type="text" class="form-control" id="username" name="username">
@@ -30,11 +30,12 @@
             <input type="password" class="form-control" id="password" name="password">
         </div>
         <div class="col-12">
-            <a class="btn btn-outline-primary" href="<c:url value='/reg'/>" role="button" style="float: right">Sign up</a>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <a class="btn btn-outline-primary" href="<c:url value='/login'/>" role="button" style="float: right">Sign in</a>
+            <button type="submit" class="btn btn-primary">Sign up</button>
         </div>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form>
+
 </div>
 </body>
 </html>
